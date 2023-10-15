@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+/**
+ * main - Entry point
+ * Description: 'the program print the sizes of different kind of data'
+ * Return: Always 0.
+ */
+
 int main(void)
 {
 	printf("Size of a char: %zu byte(s)\n", sizeof(char));
