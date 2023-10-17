@@ -12,7 +12,8 @@ int main(void)
 {
 	int ascii_num = 48;
 
-	for (int i = 0; i < 10; i++)
+	int i;
+	for (i = 0; i < 10; i++)
 	{
 		putchar((ascii_num + i));
 		putchar(44);

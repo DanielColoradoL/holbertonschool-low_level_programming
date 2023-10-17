@@ -11,13 +11,15 @@ int main(void)
 {
 	char abc = 'a';
 
-	for (int i = 0; i < 26; i++)
+	int i, j;
+	for (i = 0; i < 26; i++)
 	{
 		putchar((abc + i));
 	}
 
 	abc = 'A';
-	for (int j = 0; j < 26; j++)
+
+	for (j = 0; j < 26; j++)
 	{
 		putchar((abc + j));
 	}
