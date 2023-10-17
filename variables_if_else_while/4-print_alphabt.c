@@ -11,8 +11,8 @@
 int main(void)
 {
 	char abc = 'a';
-
 	int i;
+
 	for (i = 0; i < 26; i++)
 	{
 		if (abc + i == 'q' || abc + i == 'e')

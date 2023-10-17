@@ -10,8 +10,8 @@
 int main(void)
 {
 	char abc = 'a';
-	
 	int i;
+
 	for (i = 25; i > -1; i--)
 	{
 		putchar((abc + i));

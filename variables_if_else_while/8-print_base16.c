@@ -11,8 +11,8 @@ int main(void)
 {
 	char hex = 48;
 	int ascii_dif;
-
 	int i;
+
 	for (i = 0; i < 16; i++)
 	{
 		if (i > 9)
