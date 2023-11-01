@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	char *text = "_putchar.c";
+	char *text = "_putchar";
 	int i;
 
 	for (i = 0; i < 10; i++)
