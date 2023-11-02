@@ -22,10 +22,11 @@ int _atoi(char *s)
 
 	for (i = 0; i < len; i++)
 	{
-		if (*(s + i) == 45 && (*(s + i + 1) >= 48 && *(s + i + 1) <= 57))
+		if (*(s + i) == '-')
 		{
-			sign = -1;
+			sign = sign * -1;
 		}
+
 		if (*(s + i) >= 48 && *(s + i) <= 57)
 		{
 			current_value = current_value * 10 + (*(s + i) - 48);
