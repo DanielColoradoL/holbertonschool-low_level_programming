@@ -14,5 +14,9 @@ int _abs(int num)
 	{
 		outcome = num * -1;
 	}
+	else
+	{
+		outcome = num;
+	}
 	return (outcome);
 }
