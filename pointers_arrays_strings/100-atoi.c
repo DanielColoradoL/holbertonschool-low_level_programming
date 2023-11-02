@@ -29,7 +29,7 @@ int _atoi(char *s)
 		}
 
 		if (*(s + i) >= 48 && *(s + i) <= 57)
-		{.
+		{
 			digit = (*(s + i) - 48);
 			if (sign == -1)
 			{
