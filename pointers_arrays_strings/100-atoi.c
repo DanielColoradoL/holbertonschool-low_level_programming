@@ -14,6 +14,7 @@ int _atoi(char *s)
 	int outcome = 0;
 	int current_value = 0;
 	int i = 0;
+	int digit = 0;
 
 	while (*(s + len) != 0)
 	{
@@ -24,20 +25,25 @@ int _atoi(char *s)
 	{
 		if (*(s + i) == '-')
 		{
-			sign = sign * -1;
+			sign = -sign;
 		}
 
 		if (*(s + i) >= 48 && *(s + i) <= 57)
-		{
-			current_value = current_value * 10 + (*(s + i) - 48);
+		{.
+			digit = (*(s + i) - 48);
+			if (sign == -1)
+			{
+				digit = -digit;
+			}
+
+			current_value = current_value * 10 + digit;
 
 			if (*(s + i + 1) < 48 || *(s + i + 1) > 57)
 			{
 				break;
 			}
 		}
-
 	}
-	outcome = current_value * sign;
+	outcome = current_value;
 	return (outcome);
 }
