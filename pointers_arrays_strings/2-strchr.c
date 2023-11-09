@@ -24,13 +24,13 @@ char *_strchr(char *s, char c)
 		s++;
 	}
 
-	if (flag == 1)
+	if (flag == 1 || c == '\0')
 	{
 		outcome = s;
 	}
 	else
 	{
-		outcome = "NULL";
+		outcome = NULL;
 	}
 
 	return (outcome);
