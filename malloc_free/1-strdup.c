@@ -10,7 +10,7 @@
 
 char *_strdup(char *str)
 {
-	int size;
+	int size = 0;
 	int i;
 	char *str_copy;
 
@@ -19,16 +19,19 @@ char *_strdup(char *str)
 		return (NULL);
 	}
 
-	for (size = 0; str[size] != 0; size++)
+	while (str[size] != 0)
+	{
+		size++;
+	}
 
-	str_copy = malloc(size + 1);
+	str_copy = malloc((sizeof(char) * size) + 1);
 
 	if (str_copy == NULL)
 	{
 		return (NULL);
 	}
 
-	for (i = 0; i < (size + 1); i++)
+	for (i = 0; i <= (size + 1); i++)
 	{
 		str_copy[i] = str[i];
 	}
