@@ -12,27 +12,39 @@
 
 int **alloc_grid(int width, int height)
 {
-	int row = width;
-	int col = height;
 	int **out_grid;
 	int i, j;
 
 	if (row < 1 || col < 1)
-		return (NULL);
-
-	out_grid = (int **)malloc(col * sizeof(int *));
-	if (out_grid == NULL)
-		return (NULL);
-
-	for (i = 0; i < row; i++)
 	{
-		out_grid[i] = (int *)malloc(sizeof(int) * row);
-		for (j = 0; j < col; j++)
+		return (NULL);
+	}
+
+	out_grid = (int **)malloc(height * sizeof(int *));
+	if (out_grid == NULL)
+	{
+		return (NULL);
+	}
+
+	for (i = 0; i < height; i++)
+	{
+		out_grid[i] = (int *)malloc(sizeof(int) * width);
+		if (out_grid[i] == NULL)
 		{
-			out_grid[i][j] = 0;
+			free(out_grid);
+			for (j = 0; j <= i; j++)
+				free(out_grid[j]);
+			return (NULL);
+		}
+	}
+
+	for (i = 0; i < height; i++)
+	{
+		for (j = 0; j < width; j++)
+		{
+			arr[i][j] = 0;
 		}
 	}
 
 	return (out_grid);
 }
-
