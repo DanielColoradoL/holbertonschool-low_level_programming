@@ -8,40 +8,36 @@ void print_all(const char * const format, ...)
 {
 	int i = 0;
 	va_list ap;
-	char *str, *filler = ", ";
+	char *str, *filler = "";
 
 	va_start(ap, format);
-	while (format[i] != 0)
+	if (format != NULL)
 	{
-		if (format[i + 1] == 0)
-			filler = "";
-		switch (format[i])
+		while (format[i] != 0)
 		{
-			case 'c':
-				printf("%c%s", va_arg(ap, int), filler);
-				i++;
-				break;
-			case 'i':
-				printf("%i%s", va_arg(ap, int), filler);
-				i++;
-				break;
-			case 'f':
-				printf("%f%s", va_arg(ap, double), filler);
-				i++;
-				break;
-			case 's':
-				str = va_arg(ap, char*);
-				if (str == NULL)
-				{
-					printf("(nil)");
-					i++;
+			switch (format[i])
+			{
+				case 'c':
+					printf("%s%c", filler, va_arg(ap, int));
 					break;
-				}
-				printf("%s%s", str, filler);
-				i++;
-				break;
-			default:
-				i++;
+				case 'i':
+					printf("%s%i", filler, va_arg(ap, int));
+					break;
+				case 'f':
+					printf("%s%f", filler, va_arg(ap, double));
+					break;
+				case 's':
+					str = va_arg(ap, char*);
+					if (str == NULL)
+					{
+						printf("%s(nil)", filler);
+						break;
+					}
+					printf("%s%s", filler, str);
+					break;
+			}
+			i++;
+			filler = ", ";
 		}
 	}
 	printf("\n");
