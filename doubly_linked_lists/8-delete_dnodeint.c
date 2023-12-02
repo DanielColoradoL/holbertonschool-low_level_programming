@@ -10,17 +10,18 @@
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	dlistint_t *prev, *next, *del_nod;
-	unsigned int count = 0, i;
+	dlistint_t *prev, *next;
+	unsigned int count = 0;
 
 	if (*head == NULL)
-	{
 		return (-1);
-	}
+
 	prev = next = *head;
 	count = dlistint_leng(next);
 
-	if (index == 0)
+	if (index > count - 1)
+		return (-1);
+	else if (index == 0)
 	{
 		if (count > 1)
 		{
@@ -28,35 +29,23 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 			next->prev = NULL;
 			free(*head);
 			*head = next;
-			return (1);
 		}
 		else
 		{
 			*head = NULL;
 			free(*head);
-			return (1);
 		}
 	}
-	if (index == count - 1)
+	else if (index == count - 1)
 	{
 		while (next->next != NULL)
 			next = next->next;
 		prev = next->prev;
 		free(next);
 		prev->next = NULL;
-		return (1);
 	}
-	if (index > count - 1)
-    {
-		return (-1);
-    }
-	for (i = 1; i < index; i++)
-		prev = prev->next;
-	next = del_nod = prev->next;
-	next = next->next;
-	prev->next = next;
-	next->prev = prev;
-	free(del_nod);
+	else
+		dlistint_delnode(prev, index);
 	return (1);
 }
 
@@ -68,10 +57,32 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 unsigned int dlistint_leng(dlistint_t *list)
 {
 	unsigned int count = 0;
+
 	while (list != NULL)
 	{
 		list = list->next;
 		count++;
 	}
 	return (count);
+}
+
+/**
+ * dlistint_delnode - deletes node in the middle
+ * @prev: reference of the list
+ * @index: index where the node will be deleted
+ * Return: nothing
+ */
+void dlistint_delnode(dlistint_t *prev, unsigned int index)
+{
+	unsigned int i;
+	dlistint_t *next, *del_nod;
+
+	for (i = 1; i < index; i++)
+		prev = prev->next;
+
+	next = del_nod = prev->next;
+	next = next->next;
+	prev->next = next;
+	next->prev = prev;
+	free(del_nod);
 }
