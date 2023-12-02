@@ -47,12 +47,13 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		return (1);
 	}
 	if (index > count - 1)
+    {
 		return (-1);
+    }
 	for (i = 1; i < index; i++)
 		prev = prev->next;
 	next = del_nod = prev->next;
-	for (i = 0; i < 2; i++)
-		next = next->next;
+	next = next->next;
 	prev->next = next;
 	next->prev = prev;
 	free(del_nod);
