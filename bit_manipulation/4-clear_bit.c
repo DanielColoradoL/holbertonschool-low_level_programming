@@ -33,10 +33,6 @@ int clear_bit(unsigned long int *n, unsigned int index)
  */
 unsigned int _pow_recursion(unsigned int x, unsigned int y)
 {
-	if (y < 0)
-	{
-		return (-1);
-	}
 	if (y == 0)
 	{
 		return (1);

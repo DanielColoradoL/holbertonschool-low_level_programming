@@ -15,10 +15,9 @@ void print_binary(unsigned long int n)
 		return;
 	}
 
-	for (; m >> swap > 0; swap++)
+	for (m = n, swap = 0; (m >>= 1) > 0; swap++)
 	{}
 
-	swap--;
 	for (; swap >= 0; swap--)
 	{
 		if ((n >> swap) & 1)
