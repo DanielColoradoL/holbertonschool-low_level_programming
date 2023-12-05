@@ -8,19 +8,15 @@
  */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned long int tmp;
+	unsigned long int tmp = 0;
 
 	if (index > 63)
-		return (0);
+		return (-1);
 
-	if (*n <= 0)
-		return (1);
-
-	if (*n >= _pow_recursion(2, index))
-	{
+	if ((*n >> index) & 1)
 		tmp = _pow_recursion(2, index);
-		*n = *n - tmp;
-	}
+	*n = *n - tmp;
+
 	return (1);
 }
 
