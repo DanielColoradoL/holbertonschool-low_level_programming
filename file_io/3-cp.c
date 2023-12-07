@@ -36,14 +36,14 @@ int main(int argc, char *argv[])
 		if (from == -1 || r == -1)
 		{
 			dprintf(STDERR_FILENO,
-				"Can't read from file %s\n", argv[1]);
+				"Error: Can't read from file %s\n", argv[1]);
 			exit(98);
 		}
-		w = write(to, buffer, 1024);
+		w = write(to, buffer, r);
 		if (to == -1 || w == -1)
 		{
 			dprintf(STDERR_FILENO,
-				"Can't write to %s\n", argv[2]);
+				"Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
 		to = open(argv[2], O_WRONLY | O_APPEND);
@@ -70,7 +70,7 @@ void close_fd(int fd)
 	if (close_status == -1)
 	{
 		dprintf(STDERR_FILENO,
-			"Can't close fd %i\n", fd);
+			"Error: Can't close fd %i\n", fd);
 		exit(100);
 	}
 }
@@ -89,7 +89,7 @@ char *create_buffer(char *fd)
 	if (buffer == NULL)
 	{
 		dprintf(STDERR_FILENO,
-			"Can't write to %s\n", fd);
+			"Error: Can't write to %s\n", fd);
 		exit(99);
 	}
 	return (buffer);
