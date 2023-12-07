@@ -89,7 +89,7 @@ char *create_buffer(char *fd)
 	if (buffer == NULL)
 	{
 		dprintf(STDERR_FILENO,
-			"Can't write to %s\n", argv[2]);
+			"Can't write to %s\n", fd);
 		exit(99);
 	}
 	return (buffer);
