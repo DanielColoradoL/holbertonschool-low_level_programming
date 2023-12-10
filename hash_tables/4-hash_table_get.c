@@ -14,13 +14,16 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	hash_node_t *current;
 	unsigned long int i;
 
+	if (ht == NULL)
+		return (NULL);
+
 	for (i = 0; i < ht->size; i++)
 	{
 		current = ht->array[i];
 		while (current != NULL)
 		{
-			if (strcmp(ht->array[i]->key, key) == 0)
-				return (ht->array[i]->value);
+			if (strcmp(current->key, key) == 0)
+				return (current->value);
 			current = current->next;
 		}
 	}
